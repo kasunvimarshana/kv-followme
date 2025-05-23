@@ -1,0 +1,91 @@
+dsadd user "CN=Ldap Reader,OU=KV Users,DC=kv,DC=net" ^
+-samid ldapreader ^
+-fn Ldap ^
+-ln Reader ^
+-display "Ldap Reader" ^
+-desc "Position description" ^
+-title "Ldap Reader" ^
+-email ldapreader@kv.net ^
+-upn ldapreader@kv.net ^
+-pwd Password@123 ^
+-disabled no ^
+-mustchpwd no
+=========================================================
+
+dsadd user "CN=Kasun Vimarshana,OU=KV Users,DC=kv,DC=net" ^
+-samid kasunv ^
+-fn Kasun ^
+-ln Vimarshana ^
+-display "Kasun Vimarshana" ^
+-desc "IT Manager" ^
+-title "IT Manager" ^
+-dept "IT" ^
+-company "KV Pvt Ltd" ^
+-empid "EMP-0001" ^
+-email kasunv@kv.net ^
+-tel "+94713525253" ^
+-upn kasunv@kv.net ^
+-office "Colombo Office" ^
+-pwd Password@123 ^
+-disabled no ^
+-mustchpwd no
+=========================================================
+
+dsadd user "CN=Sasindu Nishada,OU=KV Users,DC=kv,DC=net" ^
+-samid sasindu ^
+-fn Sasindu ^
+-ln Nishada ^
+-display "Sasindu Nishada" ^
+-desc "Planing Manager" ^
+-title "Planing Manager" ^
+-dept "Planing" ^
+-company "KV Pvt Ltd" ^
+-empid "EMP-0002" ^
+-email sasindu@kv.net ^
+-tel "+94713525253" ^
+-upn sasindu@kv.net ^
+-office "Colombo Office" ^
+-pwd Password@123 ^
+-disabled no ^
+-mustchpwd no
+=========================================================
+
+dsadd user "CN=Susiri Laksiri,OU=KV Users,DC=kv,DC=net" ^
+-samid susiri ^
+-fn Susiri ^
+-ln Laksiri ^
+-display "Susiri Laksiri" ^
+-desc "Software Engineer" ^
+-title "Software Engineer" ^
+-dept "IT" ^
+-company "KV Pvt Ltd" ^
+-empid "EMP-0003" ^
+-email susiri@kv.net ^
+-tel "+94713525253" ^
+-upn susiri@kv.net ^
+-mgr "CN=Kasun Vimarshana,OU=KV Users,DC=kv,DC=net" ^
+-office "Colombo Office" ^
+-pwd Password@123 ^
+-disabled no ^
+-mustchpwd no
+=========================================================
+
+dsadd user "CN=Amila Sanjeewa,OU=KV Users,DC=kv,DC=net" ^
+-samid amila ^
+-fn Amila ^
+-ln Sanjeewa ^
+-display "Amila Sanjeewa" ^
+-desc "Software Engineer" ^
+-title "Software Engineer" ^
+-dept "IT" ^
+-company "KV Pvt Ltd" ^
+-empid "EMP-0004" ^
+-email amila@kv.net ^
+-tel "+94713525253" ^
+-upn amila@kv.net ^
+-mgr "CN=Kasun Vimarshana,OU=KV Users,DC=kv,DC=net" ^
+-office "Colombo Office" ^
+-pwd Password@123 ^
+-disabled no ^
+-mustchpwd no
+=========================================================

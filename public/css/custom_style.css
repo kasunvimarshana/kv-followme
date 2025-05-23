@@ -1,0 +1,71 @@
+.info-box-number{
+    word-wrap: break-word !important;
+}
+
+.modal-body{
+    word-wrap: break-word !important;
+}
+
+/* tooltip */
+.tooltip{
+    position: fixed;
+    z-index: 999999999 !important;
+}
+
+/* treeview menu-open li */
+.sidebar-menu li{
+    padding-left: 0em !important;
+}
+.treeview.active.menu-open{
+    padding-left: 0 !important;
+}
+
+/* backround color sidebar menu selected list item */
+.sidebar-menu li.active{
+    background-color: rgba(60,141,188, 0.3) !important;
+}
+.sidebar-menu>li.active>a {
+    background-color: transparent !important;
+}
+
+/* datatable */
+table.dataTable tbody td{
+    word-break: break-word !important;
+    vertical-align: top;
+}
+
+table.dataTable tbody td.text-style-1 > *{
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-weight: 900;
+}
+
+/* text style */
+.text-style-1{
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-weight: 900;
+}
+
+/*table td {
+    transition: all .5s;
+    max-width: 120px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    word-wrap: break-word;
+    overflow: hidden;
+}*/
+
+.bg-green{
+    background-color: rgba(34,139,34,1) !important;
+    color: rgba(0, 0, 0, 1) !important;
+}
+
+.bg-red{
+    background-color: rgba(128,0,0,1) !important;
+    color: rgba(0, 0, 0, 1) !important;
+}
+
+.bg-yellow{
+    background-color: rgba(255,190,0,1) !important;
+    color: rgba(0, 0, 0, 1) !important;
+}

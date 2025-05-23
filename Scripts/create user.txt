@@ -1,0 +1,17 @@
+dsadd user "CN=Kasun Vimarshana,OU=KV Users,DC=kv,DC=net" `
+  -samid kasun.vimarshana `
+  -upn kasun.vimarshana@kv.net `
+  -fn Kasun `
+  -ln Vimarshana `
+  -display "Kasun Vimarshana (IT Manager)" `
+  -desc "Senior IT Manager" `
+  -title "IT Manager" `
+  -dept "Information Technology" `
+  -company "KV Solutions" `
+  -empid KV1001 `
+  -email kasun.vimarshana@kv.net `
+  -tel +94713525253 `
+  -mobile +94713525253 `
+  -pwd password@123 `
+  -mustchpwd yes `
+  -office "Colombo Head Office"

@@ -1,0 +1,7 @@
+dsquery user -limit 0 | dsget user -samid -fn -ln -display -email -dept -company -title -desc > C:\AD\AllUsers.txt
+
+dsquery computer -limit 0 | dsget computer -dn -desc -loc > C:\AD\AllComputers.txt
+
+dsquery ou -limit 0 | dsget ou -dn -desc > C:\AD\AllOUsDetails.txt
+
+wmic useraccount where name='johndoe' get /value
