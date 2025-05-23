@@ -1,0 +1,22 @@
+@startuml FollowMe_Communication
+
+title Notification Sequence
+
+participant "Task Service" as TS
+participant "Notification Engine" as NE
+participant "Email Server" as ES
+participant "User Inbox" as UI
+participant "Manager Dashboard" as MD
+
+TS -> NE: Deadline approaching (Task 123)
+NE -> ES: Send Email Alert
+ES -> UI: Deliver Message
+NE -> MD: Update Dashboard Counter
+MD --> NE: Acknowledge
+
+note left of TS
+  Checks deadlines hourly
+  via cron job
+end note
+
+@enduml

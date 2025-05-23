@@ -1,0 +1,52 @@
+@startuml FollowMe_Component_Diagram
+
+title FollowMe System Component Architecture
+
+package "Frontend" {
+  [HTML/CSS Prototype] as UI
+  [Vue.js (Planned)] as VUE
+  [Dashboard] as DASH
+}
+
+package "Backend (Laravel)" {
+  [Task Controller] as TASK
+  [Auth Service] as AUTH
+  [Notification Service] as NOTIFY
+  [API Gateway] as API
+}
+
+package "Database" {
+  [MySQL] as DB
+  [Task Schema] as T_SCHEMA
+  [User Schema] as U_SCHEMA
+}
+
+package "External Systems" {
+  [Active Directory] as AD
+  [Power BI (Planned)] as PBI
+}
+
+package "Infrastructure" {
+  [Docker Container] as DOCKER
+  [Nginx Server] as NGINX
+}
+
+UI --> API : HTTP Requests
+VUE --> API : Future Implementation
+API --> TASK : Manages
+API --> AUTH : Uses
+AUTH --> AD : LDAP Auth
+TASK --> NOTIFY : Triggers
+NOTIFY --> PBI : Data Export (Future)
+TASK --> DB : CRUD Operations
+DB --> T_SCHEMA : Stores
+DB --> U_SCHEMA : Stores
+DOCKER --> NGINX : Hosts
+NGINX --> UI : Serves
+
+note right of AUTH
+  Implements role-based access control
+  via LDAP/Active Directory integration
+end note
+
+@enduml

@@ -1,0 +1,28 @@
+@startuml
+start
+:Authenticate User via LDAP;
+note right: Active Directory credentials
+
+partition "Task Lifecycle" {
+  :Create Task (Define What, When, Who);
+  :Assign to User/Department;
+  :Track Progress;
+
+  if (Deadline Exceeded?) then (Yes)
+    :Trigger Notification (PHP Mailer);
+    :Escalate to Manager;
+  else (No)
+    :Continue Monitoring;
+  endif
+
+  :Mark Task as Complete;
+  :Update Database (MySQL);
+}
+
+partition "Notifications" {
+  :Send Email/SMS Alert;
+  :Log Notification Status;
+}
+
+stop
+@enduml

@@ -1,0 +1,76 @@
+@startuml FollowMe_Final_Deployment
+
+title FollowMe 3W System Deployment Architecture
+
+skinparam nodesep 10
+skinparam ranksep 15
+
+artifact "Docker Container Stack" {
+  node "Web Layer" {
+    component "Nginx\n(Reverse Proxy)" as NGINX #FFA500
+    component "Laravel Application" as LARAVEL #87CEEB {
+      interface "PHP-FPM 9000" as PHP_FPM
+    }
+    component "Redis\n(Caching)" as REDIS #FF6347
+    component "Supervisor\n(Queue Mgmt)" as SUPERVISOR #778899
+  }
+
+  node "Database Layer" {
+    database "MySQL Primary\n(3W Schema)" as MYSQL_PRIMARY #90EE90
+    database "MySQL Replica\n(Read Scaling)" as MYSQL_REPLICA #90EE90
+  }
+}
+
+cloud "Corporate Infrastructure" {
+  component "Active Directory\n(LDAP Server)" as AD #FFB6C1
+  component "AWS S3\n(Backups)" as S3 #FFD700
+}
+
+cloud "External Integrations" {
+  component "Power BI\n(Analytics)" as POWER_BI #C0C0C0
+}
+
+node "Client Layer" {
+  [Web Browser] as BROWSER
+  [Mobile Device] as MOBILE
+}
+
+'=== Connections ===
+BROWSER -[#0076D7]-> NGINX : HTTPS (443)\nTLS 1.3
+MOBILE -[#0076D7]-> NGINX : HTTPS (443)\nTLS 1.3
+
+NGINX --> PHP_FPM : FastCGI\n(unix:/var/run/php-fpm.sock)
+LARAVEL --> MYSQL_PRIMARY : MySQL (3306)\nConnection Pooling
+LARAVEL --> REDIS : Cache Sessions\n(6379)
+LARAVEL --> SUPERVISOR : Manage Workers\n(queue:work)
+LARAVEL --> AD : LDAPS (636)\nAuthentication
+MYSQL_PRIMARY <--> MYSQL_REPLICA : Async Replication\nbinlog
+MYSQL_PRIMARY --> S3 : Daily Backups\nAES-256
+POWER_BI .[#888888].> MYSQL_PRIMARY : ODBC\n(Planned)
+
+'=== Annotations ===
+note top of LARAVEL
+  **Laravel Stack**
+  • PHP 8.2 FPM
+  • Laravel 10.x
+  • Redis Client
+  • Supervisor 4.x
+  • Guzzle HTTP
+end note
+
+note bottom of MYSQL_PRIMARY
+  **Database Features**
+  • InnoDB Engine
+  • Daily Point-in-Time Recovery
+  • Row-Level Security
+  • Connection Pooling
+end note
+
+note right of POWER_BI
+  **Future Integration**
+  • OAuth2 Authentication
+  • Direct Query Mode
+  • Scheduled Data Refresh
+end note
+
+@enduml

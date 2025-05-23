@@ -1,0 +1,24 @@
+@startuml FollowMe_Activity
+
+title Task Status Update Process
+
+start
+:Employee logs in;
+if (Authentication valid?) then (Yes)
+  :Access Task List;
+  :Select Task;
+  :Update Status;
+  if (Status = Completed?) then (Yes)
+    :Upload Supporting Files;
+  else (No)
+    :Add Comments;
+  endif
+  :Save Changes;
+  :Trigger Notification;
+  stop
+else (No)
+  :Show Error;
+  stop
+endif
+
+@enduml

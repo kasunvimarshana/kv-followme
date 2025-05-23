@@ -1,0 +1,31 @@
+@startuml
+left to right direction
+actor "User" as User
+actor "Admin" as Admin
+actor "LDAP Server" as LDAP
+
+rectangle FollowMe {
+  User --> (Create Task) : "Define What, When, Who"
+  User --> (Update Task Status)
+  User --> (View Dashboard)
+  Admin --> (Generate Reports)
+  Admin --> (Manage Users/Departments)
+  (Create Task) .> (Assign Task) : extends
+  (Assign Task) .> (Trigger Notification) : extends
+  (Authenticate User) --> LDAP : "Verify credentials"
+  (Trigger Notification) --> (Send Email/SMS) : "PHP Mailer"
+}
+
+note right of FollowMe
+  **3W Framework**:
+  - What: Task description
+  - When: Deadline
+  - Who: Assigned user/department
+end note
+
+note left of LDAP
+  **LDAP Integration**:
+  - Active Directory authentication
+  - Role-based access control
+end note
+@enduml

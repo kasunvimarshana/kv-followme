@@ -1,0 +1,25 @@
+@startuml FollowMe_State_Machine
+
+title Task State Transitions
+
+[*] --> Pending: Created
+Pending --> InProgress: Started
+InProgress --> OnHold: Blocked
+OnHold --> InProgress: Resumed
+InProgress --> Completed: Finished
+Completed --> Archived: After Review
+Pending --> Cancelled: Rejected
+OnHold --> Cancelled: Abandoned
+
+note right of Pending
+  Initial state after creation
+  Requires assignment
+end note
+
+note left of Completed
+  Triggers:
+  - Notify manager
+  - Update dashboard
+end note
+
+@enduml

@@ -1,0 +1,15 @@
+@startuml
+start
+:Employee logs in;
+:Views assigned task list;
+if (Task selected?) then (yes)
+  :Opens task details;
+  :Changes status;
+  :Submits update;
+  :System logs change;
+  :Notifies Manager;
+else (no)
+  :Go back to dashboard;
+endif
+stop
+@enduml

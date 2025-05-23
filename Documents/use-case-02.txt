@@ -1,0 +1,62 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+skinparam usecase {
+  BackgroundColor #FDF6E3
+  BorderColor Black
+  ArrowColor Black
+  ActorBorderColor Black
+  ActorFontColor Black
+  ActorBackgroundColor #EEE8D5
+}
+
+actor Admin
+actor Manager
+actor Employee
+
+rectangle "FollowMe System" {
+  (Manage Users) as UC1
+  (Manage Departments) as UC2
+  (Assign Roles) as UC3
+  (Assign Tasks) as UC4
+  (Set Deadlines) as UC5
+  (Monitor Progress) as UC6
+  (Review Performance) as UC7
+  (View Reports) as UC8
+  (Send Reminders) as UC9
+  (View Assigned Tasks) as UC10
+  (Update Task Status) as UC11
+  (Add Comments) as UC12
+  (Receive Notifications) as UC13
+  (Authenticate User) as UC14
+  (Change Password) as UC15
+}
+
+Admin --> UC1
+Admin --> UC2
+Admin --> UC3
+
+Manager --> UC4
+Manager --> UC5
+Manager --> UC6
+Manager --> UC7
+Manager --> UC8
+Manager --> UC9
+
+Employee --> UC10
+Employee --> UC11
+Employee --> UC12
+Employee --> UC13
+
+Admin --> UC14
+Manager --> UC14
+Employee --> UC14
+
+Admin --> UC15
+Manager --> UC15
+Employee --> UC15
+
+UC4 --> UC13 : include
+UC11 --> UC6 : include
+UC8 --> UC7 : include
+@enduml

@@ -1,0 +1,26 @@
+@startuml FollowMe_Sequence
+
+actor Manager
+participant "Vue.js UI" as UI
+participant "Laravel API" as API
+participant "Task Service" as TASK
+participant "MySQL DB" as DB
+participant "Notification Service" as NOTIFY
+
+Manager -> UI: Create New 3W Task
+UI -> API: POST /api/tasks
+API -> TASK: validateTask()
+TASK -> DB: INSERT task
+DB --> TASK: Task ID
+TASK -> NOTIFY: scheduleReminders()
+NOTIFY --> UI: 201 Created
+UI --> Manager: Confirmation
+
+note right of DB
+  Stores:
+  - What (description)
+  - When (deadline)
+  - Who (assignee)
+end note
+
+@enduml

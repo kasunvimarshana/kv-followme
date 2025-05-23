@@ -1,0 +1,94 @@
+@startuml
+' FollowMe System Architecture Diagram
+
+left to right direction
+
+skinparam componentStyle uml2
+skinparam linetype ortho
+
+rectangle "Client Layer" {
+  component "Web Browser" as Browser
+  component "Mobile App (Future)" as Mobile #lightblue
+}
+
+rectangle "Web Server" {
+  component "Apache/Nginx" as Webserver {
+    [HTTPS Termination]
+    [Static File Serving]
+  }
+}
+
+rectangle "Application Layer" {
+  component "Laravel 8" as Laravel {
+    [Controllers] as Controllers
+    [Blade Views] as Views
+    [Eloquent ORM] as Eloquent
+    [Migrations] as Migrations
+  }
+
+  component "Business Logic" as Logic {
+    [Task Management] as TaskMgr
+    [User Authentication] as Auth
+    [Recurrence Engine\n(Planned)] as Recurrence #lightblue
+  }
+}
+
+rectangle "Data Layer" {
+  component "MySQL/MariaDB" as DB {
+    [t_w_s\n(Tasks Table)] as Tasks
+    [t_w_users\n(Assignees)] as Assignees
+    [statuses] as Status
+  }
+
+  component "File Storage\n(Unimplemented)" as Storage #gray {
+    [AWS S3/Local]
+  }
+}
+
+rectangle "External Services" {
+  component "Email Service\n(SMTP)" as Email
+  component "Job Queue\n(Redis/Beanstalkd)" as Queue #gray
+}
+
+' Connections
+Browser --> Webserver : HTTP/HTTPS\n(port 80/443)
+Webserver --> Laravel : PHP-FPM\n(unix socket)
+
+Laravel --> Controllers : Routes
+Controllers --> TaskMgr : Business Logic
+TaskMgr --> Eloquent : Data Access
+Eloquent --> DB : SQL Queries
+Views --> Browser : HTML/CSS/JS
+
+Auth --> Eloquent : User Data
+Auth --> Email : Notifications\n(unimplemented)
+
+TaskMgr -.-> Recurrence : Future\nDevelopment
+Recurrence --> DB : event_recurring_patterns
+
+DB <--> Storage : Attachments\n(planned)
+Laravel ..> Queue : Async Jobs\n(unused)
+
+' Notes
+note right of Laravel
+  **Security Concerns**
+  - Laravel 8 (2020 release)
+  - No visible rate limiting
+  - Basic auth implementation
+end note
+
+note right of Storage
+  **Missing Features**
+  - File upload endpoints
+  - Attachment management UI
+  - S3 integration
+end note
+
+note bottom of Queue
+  **Technical Debt**
+  - jobs table exists
+  - No worker configuration
+  - No failed job handling
+end note
+
+@enduml

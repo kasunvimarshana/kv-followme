@@ -1,0 +1,81 @@
+@startuml FollowMe_System_Architecture
+
+!define LAYER_COLOR #F5F5F5
+!define COMPONENT_COLOR #E0E0E0
+
+skinparam component {
+  BackgroundColor COMPONENT_COLOR
+  BorderColor #333333
+  ArrowColor #666666
+}
+
+title FollowMe 3W Management System - Architecture Diagram
+
+'--- Layers ---
+rectangle "Frontend (User Interface)" as Frontend {
+  component "Vue.js (Planned)" as VueJS
+  component "HTML/CSS Prototype" as HTML
+  component "Responsive Dashboard" as Dashboard
+}
+
+rectangle "Backend (Laravel Framework)" as Backend {
+  component "RESTful API Layer" as API
+  component "Task Management Module" as TaskModule
+  component "Authentication (LDAP/AD)" as Auth
+  component "Notification Engine (PHP Mailer)" as Notifications
+}
+
+rectangle "Database" as Database {
+  component "MySQL Database" as MySQL
+  component "Task Schema" as TaskSchema
+  component "User Schema" as UserSchema
+}
+
+rectangle "External Systems" as External {
+  component "Active Directory" as AD
+  component "Power BI (Analytics)" as PowerBI
+}
+
+rectangle "Deployment" as Deployment {
+  component "Docker Container" as Docker
+  component "Web Server (Nginx)" as Nginx
+}
+
+'--- Relationships ---
+Frontend -[#666666]-> Backend : HTTP Requests
+Backend -[#666666]-> Database : Database Connection
+Backend -[#666666]-> External : API Calls
+Backend -[#666666]-> Deployment : Containerization
+
+HTML --> Dashboard : Renders
+VueJS --> Dashboard : Future Implementation
+API --> TaskModule : Handles Business Logic
+API --> Auth : Manages Authentication
+Auth --> AD : LDAP Integration
+TaskModule --> Notifications : Triggers
+Notifications --> PowerBI : Data Export (Planned)
+TaskModule --> MySQL : CRUD Operations
+MySQL --> TaskSchema : Stores Tasks
+MySQL --> UserSchema : Stores Users
+Deployment --> Docker : Packages
+Docker --> Nginx : Hosts Application
+
+note right of Auth
+  Implements role-based access control
+  via LDAP/Active Directory integration
+end note
+
+note left of Notifications
+  Sends email alerts for:
+  - Overdue tasks
+  - Deadline reminders
+  - Status updates
+end note
+
+note bottom of PowerBI
+  Planned integration for:
+  - Departmental performance dashboards
+  - Task completion analytics
+end note
+
+@enduml

@@ -1,0 +1,34 @@
+@startuml FollowMe_Use_Cases
+
+left to right direction
+actor "Employee" as EMP
+actor "Manager" as MGR
+actor "System Admin" as ADM
+
+rectangle "FollowMe System" {
+  (Create Task) as UC1
+  (Update Task Status) as UC2
+  (Assign 3W) as UC3
+  (View Department Dashboard) as UC4
+  (Generate Reports) as UC5
+  (Manage Users) as UC6
+  (Configure LDAP) as UC7
+
+  UC1 --> UC3 : extends
+  UC4 --> UC5 : includes
+}
+
+EMP --> UC2
+EMP --> UC4
+MGR --> UC1
+MGR --> UC3
+MGR --> UC5
+ADM --> UC6
+ADM --> UC7
+
+note bottom of UC7
+  LDAP/Active Directory integration
+  for enterprise authentication
+end note
+
+@enduml
