@@ -11,7 +11,7 @@ markdown = "# 📸 Screenshots\nBelow are screenshots of the application:\n\n"
 for screenshot in screenshots:
     # Format each screenshot into Markdown
     markdown += f"### {screenshot}\n"
-    markdown += f"![{screenshot}]({screenshots_folder}/{screenshot})\n\n"
+    markdown += f"![{screenshot}](./{screenshots_folder}/{screenshot})\n\n"
 
 # Output the markdown content
 print(markdown)
