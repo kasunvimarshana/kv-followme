@@ -1,49 +1,58 @@
 # FOLLOWME - 3W Management System
 
-## 📸 Screenshots
+# 📸 Screenshots
 Below are screenshots of the application:
 
-### AD Users And Computers
-![AD Users And Computers](./Screenshots/AD Users And Computers.png)
+### (3W) Assigned To Me.png
+![(3W) Assigned To Me.png](Screenshots/(3W) Assigned To Me.png)
 
-### Login Screen
-![Login Screen](./Screenshots/Login Screen.png)
+### (3W) Assigned To Others.png
+![(3W) Assigned To Others.png](Screenshots/(3W) Assigned To Others.png)
 
-### Home Screen
-![Home Screen](./Screenshots/Home Screen.png)
+### AD Users And Computers.png
+![AD Users And Computers.png](Screenshots/AD Users And Computers.png)
 
-### Create New 3W
-![Create New 3W](./Screenshots/Create New 3W.png)
+### Admin User Control.png
+![Admin User Control.png](Screenshots/Admin User Control.png)
 
-### (3W) Assigned To Me
-![(3W) Assigned To Me](./Screenshots/(3W) Assigned To Me.png)
+### Create New 3W 02.png
+![Create New 3W 02.png](Screenshots/Create New 3W 02.png)
 
-### (3W) Assigned To Others
-![(3W) Assigned To Others](./Screenshots/(3W) Assigned To Others.png)
+### Create New 3W 03.png
+![Create New 3W 03.png](Screenshots/Create New 3W 03.png)
 
-### My Team Status
-![My Team Status](./Screenshots/My Team Status.png)
+### Create New 3W.png
+![Create New 3W.png](Screenshots/Create New 3W.png)
 
-### My Department Status
-![My Department Status](./Screenshots/My Department Status.png)
+### Escalate Off User Control.png
+![Escalate Off User Control.png](Screenshots/Escalate Off User Control.png)
 
-### My SBU Status
-![My SBU Status](./Screenshots/My SBU Status.png)
+### Home Screen 02.png
+![Home Screen 02.png](Screenshots/Home Screen 02.png)
 
-### My SBU All
-![My SBU All](./Screenshots/My SBU All.png)
+### Home Screen.png
+![Home Screen.png](Screenshots/Home Screen.png)
 
-### Meeting Category Control
-![Meeting Category Control](./Screenshots/Meeting Category Control.png)
+### Login Screen.png
+![Login Screen.png](Screenshots/Login Screen.png)
 
-### Admin User Control
-![Admin User Control](./Screenshots/Admin User Control.png)
+### Meeting Category Control.png
+![Meeting Category Control.png](Screenshots/Meeting Category Control.png)
 
-### Escalate Off User Control
-![Escalate Off User Control](./Screenshots/Escalate Off User Control.png)
+### My Department Status.png
+![My Department Status.png](Screenshots/My Department Status.png)
 
-### Notification Schedule Control
-![Notification Schedule Control](./Screenshots/Notification Schedule Control.png)
+### My SBU All.png
+![My SBU All.png](Screenshots/My SBU All.png)
+
+### My SBU Status.png
+![My SBU Status.png](Screenshots/My SBU Status.png)
+
+### My Team Status.png
+![My Team Status.png](Screenshots/My Team Status.png)
+
+### Notification Schedule Control.png
+![Notification Schedule Control.png](Screenshots/Notification Schedule Control.png)
 
 ## 📜 License
 This project is licensed under the **MIT License**. See the [LICENSE.md](./LICENSE.md) file for details.
