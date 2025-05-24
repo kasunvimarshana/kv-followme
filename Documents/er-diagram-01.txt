@@ -1,0 +1,121 @@
+@startuml
+' Entities
+entity users {
+  *id : bigint
+  --
+  +email : varchar
+  name : varchar
+  password : varchar
+  created_at : timestamp
+  updated_at : timestamp
+}
+
+entity t_w_s {
+  *id : bigint
+  --
+  +created_user : varchar
+  company_name : varchar
+  department_name : varchar
+  title : varchar
+  description : text
+  meeting_category_id : bigint
+  status_id : bigint
+  start_date : datetime
+  due_date : datetime
+  is_done : boolean
+  done_user : varchar
+  resource_dir : text
+}
+
+entity t_w_infos {
+  *id : bigint
+  --
+  *t_w_id : bigint
+  description : text
+  created_user : varchar
+}
+
+entity t_w_users {
+  *id : bigint
+  --
+  *t_w_id : bigint
+  own_user : varchar
+  company_name : varchar
+  department_name : varchar
+}
+
+entity meeting_categories {
+  *id : bigint
+  --
+  name : varchar
+}
+
+entity statuses {
+  *id : bigint
+  --
+  name : varchar
+}
+
+entity event_recurring_patterns {
+  *id : bigint
+  --
+  recurrable_type : varchar
+  *recurrable_id : bigint
+  recurring_type_id : bigint
+  next_event_at : datetime
+}
+
+entity recurring_types {
+  *id : bigint
+  --
+  name : varchar
+}
+
+entity user_roles {
+  *id : bigint
+  --
+  user_pk : varchar
+  role_pk : varchar
+}
+
+' Relationships
+users ||--o{ user_roles : "user_pk = email"
+t_w_s }|--|| meeting_categories : "meeting_category_id"
+t_w_s }|--|| statuses : "status_id"
+t_w_s ||--o{ t_w_infos : "contains"
+t_w_s ||--o{ t_w_users : "has participants"
+t_w_users }o--|| users : "own_user → email"
+t_w_s }o--|| users : "created_user → email"
+t_w_s }o--|| users : "done_user → email"
+event_recurring_patterns }o--|| t_w_s : "recurrable_id\n(when type=App\\TW)"
+event_recurring_patterns }|--|| recurring_types : "recurring_type_id"
+
+' Indexes and notes
+note top of users
+  **PK:** id
+  **Unique:** email
+  Base user entity with system-generated ID
+  and natural key email
+end note
+
+note top of t_w_s
+  **PK:** id
+  **FKs:**
+  - meeting_category_id
+  - status_id
+  - created_user (email)
+  Core task/work entity with temporal tracking
+end note
+
+note right of event_recurring_patterns
+  Polymorphic recurrence configuration
+  **Pattern:** (recurrable_type, recurrable_id)
+  **Main relationship:** App\\TW → t_w_s.id
+end note
+
+note right of t_w_users
+  Junction table for task assignments
+  **Composite key:** (t_w_id, own_user)
+  References email instead of user.id
+end note
+@enduml
