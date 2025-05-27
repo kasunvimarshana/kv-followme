@@ -1,0 +1,32 @@
+@startuml
+class TaskController {
+  +createTask()
+  +updateStatus()
+  +assignTask()
+}
+
+class TaskService {
+  +validateTask()
+  +saveTask()
+  +sendReminder()
+}
+
+class User {
+  +id: int
+  +name: string
+  +role: string
+  +authenticate()
+}
+
+class LDAPService {
+  +authenticateUser()
+}
+
+class NotificationService {
+  +sendEmail()
+}
+
+TaskController --> TaskService
+TaskService --> NotificationService
+TaskService --> LDAPService
+@enduml

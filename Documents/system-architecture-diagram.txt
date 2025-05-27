@@ -1,0 +1,17 @@
+@startuml
+package "FollowMe System" {
+  
+  [User] --> [Web Browser]
+  [Web Browser] --> [Laravel Blade Templates]
+  [Laravel Blade Templates] --> [Laravel Controllers]
+  [Laravel Controllers] --> [Task Service]
+  [Laravel Controllers] --> [Auth Service]
+  [Laravel Controllers] --> [Notification Service]
+  [Laravel Controllers] --> [LDAP Server]
+  [Task Service] --> [MySQL Database]
+  [Notification Service] --> [PHPMailer]
+  [Laravel App] --> [Docker Container]
+  [Power BI] ..> [MySQL Database] : data source
+
+}
+@enduml

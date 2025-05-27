@@ -1,0 +1,1 @@
+dsquery * "OU=KV Users,DC=kv,DC=net" -filter "(&(objectClass=user)(manager=CN=Kasun Vimarshana,OU=KV Users,DC=kv,DC=net))" -attr displayName samid

@@ -1,0 +1,13 @@
+@startuml
+start
+:User logs in;
+:User navigates to task list;
+:User selects a task;
+if (Is assigned user?) then (yes)
+  :Update task status;
+  :Trigger email notification;
+else (no)
+  :Show error: Unauthorized;
+endif
+stop
+@enduml

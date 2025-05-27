@@ -1,0 +1,6 @@
+@echo off
+for /f "tokens=*" %%u in ('dsquery user "OU=KV Users,DC=kv,DC=net" -limit 0') do (
+    echo ----------------------------------------
+    echo User: %%u
+    dsget user %%u -samid -display -fn -ln -email -empid -title -dept -company -office -upn -tel -disabled -pwdlastset -lastlogon -mgr
+)

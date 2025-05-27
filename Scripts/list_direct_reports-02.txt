@@ -1,0 +1,10 @@
+@echo off
+setlocal
+
+set "MANAGER_DN=CN=Kasun Vimarshana,OU=KV Users,DC=kv,DC=net"
+set "SEARCH_BASE=OU=KV Users,DC=kv,DC=net"
+
+echo Direct reports of %MANAGER_DN%:
+dsquery * "%SEARCH_BASE%" -filter "(&(objectClass=user)(manager=%MANAGER_DN%))" -attr displayName samid
+
+endlocal
